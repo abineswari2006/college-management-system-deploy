@@ -1,0 +1,20 @@
+{
+  "name": "college-management-system",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm:dev --workspace=@college/api\" \"npm:dev --workspace=@college/web\"",
+    "build": "npm run build --workspace=@college/api && npm run build --workspace=@college/web",
+    "test": "npm test --workspace=@college/api",
+    "lint": "npm run lint --workspace=@college/api && npm run lint --workspace=@college/web",
+    "typecheck": "npm run typecheck --workspace=@college/api && npm run typecheck --workspace=@college/web",
+    "db:migrate": "npm run db:migrate --workspace=@college/api",
+    "db:seed": "npm run db:seed --workspace=@college/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
