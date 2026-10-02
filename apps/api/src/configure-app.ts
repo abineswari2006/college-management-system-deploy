@@ -8,7 +8,7 @@ export function configureApiApp(app: INestApplication) {
   if (Number.isInteger(trustedProxyHops) && trustedProxyHops > 0) {
     app.getHttpAdapter().getInstance().set('trust proxy', trustedProxyHops);
   }
-  app.use(helmet());
+  app.use((helmet as any)());
   app.use(cookieParser());
   app.enableCors({
     origin: process.env.WEB_ORIGIN ?? 'http://localhost:5173',
