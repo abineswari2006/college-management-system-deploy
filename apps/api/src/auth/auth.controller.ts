@@ -19,7 +19,11 @@ import { ChangePasswordDto, ForgotPasswordDto, LoginDto, ResetPasswordDto } from
 const sessionCookie = 'cms_session';
 const csrfCookie = 'cms_csrf';
 const secureCookie = process.env.NODE_ENV === 'production';
-const cookieOptions = { secure: secureCookie, sameSite: 'strict' as const, path: '/' };
+const cookieOptions = {
+  secure: true,
+  sameSite: 'none' as const,
+  path: '/',
+};
 
 @ApiTags('authentication')
 @Controller('auth')
